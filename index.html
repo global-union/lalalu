@@ -1013,20 +1013,22 @@
       .site-logo img { height: 48px; }
       .header-inner::after { content: ''; width: 32px; }
 
+      .hero { overflow: hidden; }
       .hero-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         text-align: center;
         padding-top: 110px;
         padding-bottom: 60px;
-        padding-left: 20px;
-        padding-right: 20px;
-        overflow: hidden;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
       }
-      .hero-copy-en { font-size: clamp(32px, 8vw, 52px); word-break: break-word; }
-      .hero-copy-ja { font-size: 15px; }
+      .hero-bg,
+      .hero-bg::before { overflow: hidden; }
+      .hero-copy-en { font-size: clamp(28px, 7vw, 48px) !important; word-break: break-word; overflow-wrap: break-word; }
+      .hero-copy-ja { font-size: 14px; }
       .hero-label { justify-content: center; }
       .hero-cta-group { justify-content: center; flex-direction: column; align-items: center; }
-      .hero-visual { display: none; }
+      .hero-visual { display: none !important; }
       .hero-scroll { display: none; }
 
       .pillars-grid { grid-template-columns: 1fr; }
@@ -1170,26 +1172,22 @@
           </div>
         </div>
         <div class="live-card fade-up">
-          <div class="live-card-status">Coming Soon</div>
-          <h3 class="live-card-title">じゅんきライブ<br>Vol.〇〇</h3>
+          <div class="live-card-status">Next Live</div>
+          <h3 class="live-card-title">じゅんきライブ</h3>
           <ul class="live-info-list">
             <li class="live-info-item">
               <span class="live-info-label">DATE</span>
-              <span class="live-info-val live-tbd">日程調整中</span>
-            </li>
-            <li class="live-info-item">
-              <span class="live-info-label">VENUE</span>
-              <span class="live-info-val">TSL 4K スタジオ（詳細未定）</span>
+              <span class="live-info-val">4月25日（金）・5月23日（金）</span>
             </li>
             <li class="live-info-item">
               <span class="live-info-label">TICKET</span>
               <span class="live-info-val">
-                <div class="live-price">¥5,000<small>（税込）</small></div>
+                <div class="live-price">TIGETで申し込み受付中</div>
               </span>
             </li>
           </ul>
-          <a href="https://peatix.com/" target="_blank" rel="noopener" class="btn-ticket">
-            🎫 Peatixでチケットを購入
+          <a href="https://tiget.net/" target="_blank" rel="noopener" class="btn-ticket">
+            🎫 TIGETでチケットを申し込む
           </a>
         </div>
       </div>
