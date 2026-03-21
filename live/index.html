@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="じゅんきライブ情報。Tokyo Street Live 4Kスタジオで開催。チケットはTIGETで販売中。4月25日・5月23日開催。">
+  <meta property="og:title" content="じゅんきライブ | LaLaLu（ラ ラ ル）">
+  <meta property="og:description" content="Tokyo Street Live 4Kスタジオで開催。4月25日・5月23日。チケットはTIGETで販売中。">
+  <meta property="og:url" content="https://lalalu.info/live/">
+  <meta property="og:type" content="website">
+  <title>じゅんきライブ | LaLaLu（ラ ラ ル）</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary:      #3DBCBA;
+      --primary-deep: #2A9998;
+      --primary-light:#E8F9F8;
+      --accent:       #FF6B2B;
+      --base:         #1A1A1A;
+      --dark-bg:      #0A1A1A;
+      --dark-mid:     #0F2222;
+      --white:        #FFFFFF;
+      --gray-100:     #F5F5F5;
+      --gray-400:     #9E9E9E;
+      --gray-600:     #555555;
+
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-serif:   'Cormorant Garamond', serif;
+      --font-ja:      'Noto Sans JP', sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+      --shadow-teal: 0 8px 40px rgba(61,188,186,0.2);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-ja);
+      color: var(--base);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(61,188,186,0.15);
+      transition: box-shadow var(--transition);
+    }
+    .site-header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .header-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    .site-logo img { height: 38px; width: auto; }
+    .global-nav { display: flex; align-items: center; gap: 0; }
+    .global-nav a {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--gray-600);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .global-nav a:hover { color: var(--primary-deep); }
+    .global-nav a.active { color: var(--primary); font-weight: 700; }
+    .global-nav .nav-ticket {
+      margin-left: 12px;
+      padding: 8px 20px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .global-nav .nav-ticket:hover { background: var(--primary-deep); transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--base);
+      transition: all var(--transition);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 2px solid var(--primary);
+      padding: 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .mobile-nav-drawer.open { display: flex; }
+    .mobile-nav-drawer a {
+      display: block; padding: 12px 8px;
+      font-size: 15px; font-weight: 500;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--base);
+    }
+    .mobile-nav-drawer .nav-ticket {
+      margin-top: 12px; text-align: center;
+      background: var(--primary); color: var(--white);
+      border-radius: 50px; padding: 14px;
+      font-weight: 700; border: none;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      padding: 160px 24px 100px;
+      background: var(--dark-bg);
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 30%, rgba(61,188,186,0.12) 0%, transparent 65%),
+        linear-gradient(160deg, #061212 0%, #0A1A1A 50%, #040D0D 100%);
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(61,188,186,0.02) 3px, rgba(61,188,186,0.02) 4px
+      );
+    }
+    .hero-deco {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(120px, 20vw, 280px);
+      color: rgba(61,188,186,0.04);
+      letter-spacing: 0.1em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 30px; height: 1px;
+      background: var(--primary);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-title em { font-style: italic; color: var(--primary); }
+    .hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 48px;
+      letter-spacing: 0.05em;
+    }
+    /* 次回ライブ日付タブ */
+    .hero-dates {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-date-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(61,188,186,0.1);
+      border: 1px solid rgba(61,188,186,0.3);
+      border-radius: 50px;
+      padding: 12px 24px;
+      color: var(--primary);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      backdrop-filter: blur(10px);
+    }
+    .hero-date-chip .dot {
+      width: 8px; height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ===== SECTION COMMON ===== */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 30px; height: 1px;
+      background: var(--primary);
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    /* ===== LIVE SCHEDULE ===== */
+    .schedule-section {
+      padding: 96px 24px;
+      background: var(--white);
+    }
+    .schedule-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .schedule-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .schedule-desc {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ライブカード */
+    .live-events { display: flex; flex-direction: column; gap: 40px; }
+
+    .live-event {
+      border: 1.5px solid rgba(61,188,186,0.15);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .live-event:hover {
+      border-color: rgba(61,188,186,0.4);
+      box-shadow: var(--shadow-teal);
+    }
+
+    /* イベントヘッダー */
+    .live-event-header {
+      background: var(--dark-bg);
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .live-event-date-block { display: flex; align-items: baseline; gap: 12px; }
+    .live-event-date {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      color: var(--primary);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .live-event-year {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+    .live-event-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .live-event-venue {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .live-event-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(61,188,186,0.15);
+      border: 1px solid rgba(61,188,186,0.3);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+    .live-event-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* 昼夜グリッド */
+    .live-parts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .live-part {
+      padding: 32px 36px;
+      border-right: 1px solid rgba(61,188,186,0.1);
+      border-top: 1px solid rgba(61,188,186,0.1);
+    }
+    .live-part:last-child { border-right: none; }
+    .live-part-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .live-part-label span {
+      display: inline-block;
+      width: 24px; height: 24px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 12px;
+    }
+    .live-part-time {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--base);
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+    .live-part-time.tba {
+      color: var(--gray-400);
+      font-size: 16px;
+      font-style: italic;
+    }
+    /* 出演者リスト */
+    .performers { display: flex; flex-direction: column; gap: 10px; }
+    .performer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--gray-100);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .performer-num {
+      width: 24px; height: 24px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-deep);
+      flex-shrink: 0;
+    }
+    .performer-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--base);
+    }
+    .performer-name.tba {
+      color: var(--gray-400);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* チケットエリア */
+    .live-ticket-area {
+      padding: 24px 36px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(61,188,186,0.15);
+    }
+    .live-ticket-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .live-ticket-price .num {
+      font-family: var(--font-display);
+      font-size: 40px;
+      color: var(--primary-deep);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .live-ticket-price .unit {
+      font-size: 13px;
+      color: var(--gray-600);
+    }
+    .live-ticket-note {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 4px;
+    }
+    .btn-tiget {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 20px rgba(61,188,186,0.35);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+    .btn-tiget:hover {
+      background: var(--primary-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(61,188,186,0.45);
+    }
+    .btn-tiget.disabled {
+      background: var(--gray-400);
+      box-shadow: none;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* ===== INFO セクション ===== */
+    .info-section {
+      background: var(--gray-100);
+      padding: 80px 24px;
+    }
+    .info-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .info-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      border: 1px solid rgba(61,188,186,0.1);
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-teal);
+    }
+    .info-card-icon { font-size: 32px; margin-bottom: 12px; }
+    .info-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--base);
+    }
+    .info-card-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ===== X フォロー ===== */
+    .x-section {
+      background: var(--dark-bg);
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .x-section::before {
+      content: '𝕏';
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(160px, 25vw, 320px);
+      color: rgba(255,255,255,0.03);
+      pointer-events: none;
+    }
+    .x-inner {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--white);
+    }
+    .x-section .section-label { justify-content: center; }
+    .x-section .section-title { color: var(--white); margin-bottom: 12px; }
+    .x-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+    .btn-x {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--white);
+      color: var(--base);
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .btn-x:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--base);
+      color: rgba(255,255,255,0.6);
+      padding: 60px 24px 32px;
+    }
+    .footer-inner { max-width: 1140px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .footer-logo { margin-bottom: 16px; }
+    .footer-logo img { height: 48px; }
+    .footer-tagline { font-size: 13px; line-height: 1.7; }
+    .footer-nav-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 16px;
+    }
+    .footer-nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .footer-nav-list a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      transition: color var(--transition);
+    }
+    .footer-nav-list a:hover { color: var(--primary); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+    }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a {
+      color: rgba(255,255,255,0.4);
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover { color: var(--primary); }
+
+    .page-top {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 4px 20px rgba(61,188,186,0.4);
+      transition: opacity var(--transition), transform var(--transition);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 200;
+      border: none;
+      cursor: pointer;
+    }
+    .page-top.visible { opacity: 1; pointer-events: auto; }
+    .page-top:hover { transform: translateY(-3px); }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      .global-nav { display: none; }
+
+      /* モバイル：ハンバーガー左、ロゴ中央 */
+      .header-inner {
+        position: relative;
+        justify-content: flex-start;
+      }
+      .site-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .site-logo img { height: 48px; }
+
+      .hero-dates { flex-direction: column; align-items: center; }
+      .live-event-header { flex-direction: column; gap: 16px; }
+      .live-parts { grid-template-columns: 1fr; }
+      .live-part { border-right: none; }
+      .live-ticket-area { flex-direction: column; align-items: flex-start; }
+      .info-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .live-event-header { padding: 20px 20px; }
+      .live-part { padding: 24px 20px; }
+      .live-ticket-area { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="/" class="site-logo" aria-label="LaLaLu ホーム">
+        <img src="../images/lalalu-logo.png" alt="LALALU ラ ラ ル">
+      </a>
+      <nav class="global-nav">
+        <a href="/live/" class="active">LIVE INFO</a>
+        <a href="/tsl4k/">Tokyo Street Live 4K</a>
+        <a href="/misamon/">みさーもん</a>
+        <a href="/about/">じゅんきについて</a>
+        <a href="/blog/">NEWS</a>
+        <a href="https://tiget.net/" target="_blank" rel="noopener" class="nav-ticket">🎫 チケット購入</a>
+      </nav>
+    </div>
+    <nav class="mobile-nav-drawer" id="mobile-drawer">
+      <a href="/live/">🎵 LIVE INFO</a>
+      <a href="/tsl4k/">🎬 Tokyo Street Live 4K</a>
+      <a href="/misamon/">🍊 みさーもん</a>
+      <a href="/about/">👤 じゅんきについて</a>
+      <a href="/blog/">📰 NEWS</a>
+      <a href="https://tiget.net/" target="_blank" rel="noopener" class="nav-ticket">🎫 チケット購入</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-deco">LIVE</div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Live Event</p>
+        <h1 class="hero-title">
+          じゅんき<em>ライブ</em>
+        </h1>
+        <p class="hero-sub">Tokyo Street Live 4K スタジオ開催</p>
+        <div class="hero-dates">
+          <div class="hero-date-chip">
+            <div class="dot"></div>
+            2025年4月25日（金）
+          </div>
+          <div class="hero-date-chip">
+            <div class="dot"></div>
+            2025年5月23日（金）
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="schedule-section">
+      <div class="schedule-inner">
+        <div class="schedule-header fade-up">
+          <p class="section-label">Schedule</p>
+          <h2 class="section-title">開催スケジュール</h2>
+          <p class="schedule-desc">
+            各回、昼の部・夜の部の2部制。それぞれ2組のアーティストが出演します。<br>
+            チケットはTIGETにてお申し込みください。
+          </p>
+        </div>
+
+        <div class="live-events">
+
+          <!-- 4月25日 -->
+          <div class="live-event fade-up">
+            <div class="live-event-header">
+              <div class="live-event-date-block">
+                <div class="live-event-date">APR 25</div>
+                <div class="live-event-year">2025</div>
+              </div>
+              <div>
+                <div class="live-event-title">じゅんきライブ Vol.1</div>
+                <div class="live-event-venue">📍 Tokyo Street Live 4K スタジオ</div>
+              </div>
+              <div class="live-event-badge">
+                <div class="dot"></div>
+                受付中
+              </div>
+            </div>
+
+            <div class="live-parts">
+              <!-- 昼の部 -->
+              <div class="live-part">
+                <div class="live-part-label">
+                  <span>☀</span>昼の部
+                </div>
+                <div class="live-part-time tba">開演時間 調整中</div>
+                <div class="performers">
+                  <div class="performer">
+                    <div class="performer-num">1</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                  <div class="performer">
+                    <div class="performer-num">2</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                </div>
+              </div>
+              <!-- 夜の部 -->
+              <div class="live-part">
+                <div class="live-part-label">
+                  <span>🌙</span>夜の部
+                </div>
+                <div class="live-part-time tba">開演時間 調整中</div>
+                <div class="performers">
+                  <div class="performer">
+                    <div class="performer-num">1</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                  <div class="performer">
+                    <div class="performer-num">2</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="live-ticket-area">
+              <div>
+                <div class="live-ticket-price">
+                  <span class="num">¥5,000</span>
+                  <span class="unit">（税込）</span>
+                </div>
+                <div class="live-ticket-note">＋ワンドリンク</div>
+              </div>
+              <a href="https://tiget.net/" target="_blank" rel="noopener" class="btn-tiget">
+                🎫 TIGETでチケットを申し込む
+              </a>
+            </div>
+          </div>
+
+          <!-- 5月23日 -->
+          <div class="live-event fade-up">
+            <div class="live-event-header">
+              <div class="live-event-date-block">
+                <div class="live-event-date">MAY 23</div>
+                <div class="live-event-year">2025</div>
+              </div>
+              <div>
+                <div class="live-event-title">じゅんきライブ Vol.2</div>
+                <div class="live-event-venue">📍 Tokyo Street Live 4K スタジオ</div>
+              </div>
+              <div class="live-event-badge">
+                <div class="dot"></div>
+                受付中
+              </div>
+            </div>
+
+            <div class="live-parts">
+              <div class="live-part">
+                <div class="live-part-label">
+                  <span>☀</span>昼の部
+                </div>
+                <div class="live-part-time tba">開演時間 調整中</div>
+                <div class="performers">
+                  <div class="performer">
+                    <div class="performer-num">1</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                  <div class="performer">
+                    <div class="performer-num">2</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                </div>
+              </div>
+              <div class="live-part">
+                <div class="live-part-label">
+                  <span>🌙</span>夜の部
+                </div>
+                <div class="live-part-time tba">開演時間 調整中</div>
+                <div class="performers">
+                  <div class="performer">
+                    <div class="performer-num">1</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                  <div class="performer">
+                    <div class="performer-num">2</div>
+                    <div class="performer-name tba">出演者 調整中</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="live-ticket-area">
+              <div>
+                <div class="live-ticket-price">
+                  <span class="num">¥5,000</span>
+                  <span class="unit">（税込）</span>
+                </div>
+                <div class="live-ticket-note">＋ワンドリンク</div>
+              </div>
+              <a href="https://tiget.net/" target="_blank" rel="noopener" class="btn-tiget">
+                🎫 TIGETでチケットを申し込む
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /live-events -->
+      </div>
+    </section>
+
+    <!-- INFO -->
+    <section class="info-section">
+      <div class="info-inner">
+        <div class="schedule-header fade-up">
+          <p class="section-label">Info</p>
+          <h2 class="section-title">ご来場について</h2>
+        </div>
+        <div class="info-grid">
+          <div class="info-card fade-up">
+            <div class="info-card-icon">📍</div>
+            <div class="info-card-title">会場</div>
+            <div class="info-card-desc">
+              Tokyo Street Live 4K スタジオ<br>
+              （詳細は予約確認メールにてご案内）
+            </div>
+          </div>
+          <div class="info-card fade-up">
+            <div class="info-card-icon">🎫</div>
+            <div class="info-card-title">チケット</div>
+            <div class="info-card-desc">
+              TIGETにてお申し込みください。<br>
+              ¥5,000（税込）＋ワンドリンク
+            </div>
+          </div>
+          <div class="info-card fade-up">
+            <div class="info-card-icon">📅</div>
+            <div class="info-card-title">開催形式</div>
+            <div class="info-card-desc">
+              昼の部・夜の部の2部制。<br>
+              各部2組のアーティストが出演。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- X フォロー -->
+    <section class="x-section">
+      <div class="x-inner">
+        <p class="section-label">Follow</p>
+        <h2 class="section-title">最新情報はXで</h2>
+        <p class="x-desc">
+          じゅんきのXアカウントで出演者・開演時間など<br>
+          最新のライブ情報をいち早くお届けします。
+        </p>
+        <a href="https://x.com/space1995hana" target="_blank" rel="noopener" class="btn-x">
+          𝕏 @space1995hana をフォロー
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <img src="../images/lalalu-logo.png" alt="LALALU">
+          </div>
+          <p class="footer-tagline">
+            インディーズの舞台から、芸能界へ。<br>
+            じゅんきが仕掛ける音楽の現場。
+          </p>
+        </div>
+        <div>
+          <p class="footer-nav-title">ページ</p>
+          <ul class="footer-nav-list">
+            <li><a href="/live/">🎵 じゅんきライブ</a></li>
+            <li><a href="/tsl4k/">🎬 Tokyo Street Live 4K</a></li>
+            <li><a href="/misamon/">🍊 みさーもん</a></li>
+            <li><a href="/about/">👤 じゅんきについて</a></li>
+            <li><a href="/blog/">📰 NEWS</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-nav-title">チケット・SNS</p>
+          <ul class="footer-nav-list">
+            <li><a href="https://tiget.net/" target="_blank" rel="noopener">🎫 TIGET（チケット購入）</a></li>
+            <li><a href="https://litfun.jp/" target="_blank" rel="noopener">📱 LITFUN（みさーもん配信）</a></li>
+            <li><a href="https://x.com/space1995hana" target="_blank" rel="noopener">𝕏 @space1995hana</a></li>
+          </ul>
+          <div style="margin-top:32px;">
+            <p class="footer-nav-title">運営</p>
+            <p style="font-size:12px; line-height:1.8;">
+              LaLaLu　じゅんき
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 LaLaLu（ラ ラ ル）All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy/">プライバシーポリシー</a>
+          <a href="/contact/">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="page-top" id="page-top" aria-label="ページトップへ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const pageTop = document.getElementById('page-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        header.classList.add('scrolled');
+        pageTop.classList.add('visible');
+      } else {
+        header.classList.remove('scrolled');
+        pageTop.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobile-drawer');
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>

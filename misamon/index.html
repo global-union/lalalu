@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="シンガーソングライター「みさーもん」の公式ページ。LITFUNアプリでライブ配信・物販中！月額700円でみさーもんのすべてに触れられます。">
+  <meta property="og:title" content="みさーもん | LaLaLu（ラ ラ ル）">
+  <meta property="og:description" content="シンガーソングライター「みさーもん」。LITFUNアプリでライブ配信・物販中！">
+  <meta property="og:image" content="https://lalalu.info/images/misamon-square.webp">
+  <meta property="og:url" content="https://lalalu.info/misamon/">
+  <meta property="og:type" content="website">
+  <title>みさーもん | LaLaLu（ラ ラ ル）</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===========================
+       CSS VARIABLES（オレンジ世界）
+    =========================== */
+    :root {
+      /* Site-wide teal（ナビ等の共通部品） */
+      --teal:        #3DBCBA;
+      --teal-deep:   #2A9998;
+      --teal-light:  #E8F9F8;
+
+      /* みさーもんページ専用オレンジパレット */
+      --accent:      #FF6B2B;
+      --accent-dark: #E05520;
+      --accent-mid:  #FF8C57;
+      --accent-pale: #FFBA96;
+      --accent-bg:   #FFF0E8;
+      --accent-bg2:  #FFF7F2;
+      --warm-dark:   #2A1206;
+
+      --base:  #1A1A1A;
+      --white: #FFFFFF;
+      --gray-400: #9E9E9E;
+      --gray-600: #555555;
+      --gray-100: #F5F5F5;
+
+      --font-display: 'Pacifico', cursive;
+      --font-serif:   'Cormorant Garamond', serif;
+      --font-ja:      'Noto Sans JP', sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 32px;
+      --radius-xl: 48px;
+      --shadow-warm: 0 8px 40px rgba(255,107,43,0.2);
+      --shadow-warm-lg: 0 16px 60px rgba(255,107,43,0.25);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===========================
+       RESET & BASE
+    =========================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-ja);
+      color: var(--base);
+      background: var(--accent-bg2);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===========================
+       HEADER
+    =========================== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,247,242,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,107,43,0.15);
+      transition: box-shadow var(--transition);
+    }
+    .site-header.scrolled { box-shadow: 0 2px 20px rgba(255,107,43,0.1); }
+    .header-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    .site-logo img { height: 38px; width: auto; }
+
+    .global-nav { display: flex; align-items: center; gap: 0; }
+    .global-nav a {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--gray-600);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .global-nav a:hover { color: var(--accent-dark); }
+    .global-nav a.active { color: var(--accent); font-weight: 700; }
+    .global-nav .nav-ticket {
+      margin-left: 12px;
+      padding: 8px 20px;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .global-nav .nav-ticket:hover { background: var(--teal-deep); transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--base);
+      transition: all var(--transition);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 2px solid var(--accent);
+      padding: 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .mobile-nav-drawer.open { display: flex; }
+    .mobile-nav-drawer a {
+      display: block; padding: 12px 8px;
+      font-size: 15px; font-weight: 500;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--base);
+    }
+    .mobile-nav-drawer .nav-ticket {
+      margin-top: 12px; text-align: center;
+      background: var(--teal); color: var(--white);
+      border-radius: 50px; padding: 14px;
+      font-weight: 700; border: none;
+    }
+
+    /* ===========================
+       HERO
+    =========================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--warm-dark);
+      padding-top: 68px;
+    }
+
+    /* 背景：オレンジのグラデーション＋波形 */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 90% at 80% 50%, rgba(255,107,43,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at 10% 20%, rgba(255,140,87,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 60% at 50% 100%, rgba(255,107,43,0.12) 0%, transparent 50%),
+        linear-gradient(135deg, #1A0800 0%, #2A1206 50%, #180600 100%);
+    }
+    /* ドット模様 */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,107,43,0.12) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    /* 大きな装飾文字 */
+    .hero-deco-text {
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(100px, 15vw, 200px);
+      color: rgba(255,107,43,0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-content { color: var(--white); }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-mid);
+      margin-bottom: 20px;
+    }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 30px; height: 1px;
+      background: var(--accent-mid);
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 8vw, 104px);
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFBA96 60%, #FF6B2B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.02em;
+    }
+    .hero-name-ja {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+    .hero-catch {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero-catch em {
+      font-style: normal;
+      color: var(--accent-mid);
+    }
+    .hero-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 36px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 24px rgba(255,107,43,0.45);
+    }
+    .btn-main:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(255,107,43,0.55);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 32px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.8);
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .btn-ghost:hover { border-color: var(--accent-mid); color: var(--accent-mid); }
+
+    /* Hero photo */
+    .hero-photo {
+      position: relative;
+    }
+    .hero-photo img {
+      width: 100%;
+      border-radius: var(--radius-xl) var(--radius-xl) var(--radius-xl) 0;
+      object-fit: cover;
+      object-position: center top;
+      aspect-ratio: 3/4;
+      box-shadow: var(--shadow-warm-lg);
+      display: block;
+    }
+    /* 写真の装飾フレーム */
+    .hero-photo::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: calc(var(--radius-xl) + 8px) calc(var(--radius-xl) + 8px) calc(var(--radius-xl) + 8px) 0;
+      border: 1.5px solid rgba(255,107,43,0.3);
+      pointer-events: none;
+    }
+    .photo-chip {
+      position: absolute;
+      background: var(--white);
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      white-space: nowrap;
+    }
+    .photo-chip.chip-litfun {
+      bottom: 32px;
+      left: -24px;
+      color: var(--accent);
+    }
+    .photo-chip.chip-live {
+      top: 32px;
+      right: -24px;
+      color: var(--base);
+    }
+    .chip-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ===========================
+       PROFILE セクション
+    =========================== */
+    .profile-section {
+      background: var(--white);
+      padding: 96px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-pale), var(--accent));
+    }
+    .profile-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 30px; height: 1px;
+      background: var(--accent);
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .profile-text {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 2;
+      margin-bottom: 16px;
+    }
+    /* プロフィールキーワードタグ */
+    .keyword-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+    .keyword-tag {
+      padding: 6px 16px;
+      background: var(--accent-bg);
+      border: 1px solid rgba(255,107,43,0.2);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      letter-spacing: 0.05em;
+    }
+
+    /* Square photo */
+    .profile-photo-wrap {
+      position: relative;
+    }
+    .profile-photo-wrap img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      aspect-ratio: 1;
+      box-shadow: var(--shadow-warm);
+    }
+    /* 斜め装飾 */
+    .profile-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: 60%;
+      height: 60%;
+      border-radius: var(--radius-md);
+      background: var(--accent-bg);
+      z-index: -1;
+    }
+
+    /* ===========================
+       LITFUN CTA セクション
+    =========================== */
+    .litfun-section {
+      background: linear-gradient(135deg, var(--accent) 0%, #FF8C57 50%, #FFBA96 100%);
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .litfun-section::before {
+      content: 'LITFUN';
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(80px, 15vw, 180px);
+      color: rgba(255,255,255,0.07);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 0.05em;
+    }
+    .litfun-inner {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--white);
+    }
+    .litfun-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .litfun-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 60px);
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .litfun-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .litfun-price-badge {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 10px 28px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(10px);
+    }
+    .litfun-price-badge .price {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .litfun-price-badge .unit {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+    }
+    .btn-litfun-big {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 22px 56px;
+      background: var(--white);
+      color: var(--accent);
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-litfun-big:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 50px rgba(0,0,0,0.25);
+    }
+    .litfun-note {
+      margin-top: 24px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+    .litfun-features {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .litfun-feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+    }
+    .litfun-feature-icon {
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .litfun-feature-label { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; }
+
+    /* ===========================
+       ACTIVITY セクション
+    =========================== */
+    .activity-section {
+      background: var(--accent-bg);
+      padding: 96px 24px;
+    }
+    .activity-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .activity-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .activity-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      border: 1.5px solid rgba(255,107,43,0.1);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-pale));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .activity-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-warm);
+      border-color: rgba(255,107,43,0.25);
+    }
+    .activity-card:hover::before { transform: scaleX(1); }
+    .activity-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    .activity-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--base);
+    }
+    .activity-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.8;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .site-footer {
+      background: var(--warm-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 60px 24px 32px;
+    }
+    .footer-inner { max-width: 1140px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 32px;
+    }
+    .footer-logo { margin-bottom: 16px; }
+    .footer-logo img { height: 48px; }
+    .footer-tagline { font-size: 13px; line-height: 1.7; }
+    .footer-nav-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 16px;
+    }
+    .footer-nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .footer-nav-list a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      transition: color var(--transition);
+    }
+    .footer-nav-list a:hover { color: var(--accent-mid); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+    }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a {
+      color: rgba(255,255,255,0.4);
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover { color: var(--accent-mid); }
+
+    /* Page Top */
+    .page-top {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 48px; height: 48px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 4px 20px rgba(255,107,43,0.4);
+      transition: opacity var(--transition), transform var(--transition);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 200;
+      border: none;
+      cursor: pointer;
+    }
+    .page-top.visible { opacity: 1; pointer-events: auto; }
+    .page-top:hover { transform: translateY(-3px); }
+
+    /* ===========================
+       FADE-IN
+    =========================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      .global-nav { display: none; }
+
+      /* モバイル：ハンバーガー左、ロゴ中央 */
+      .header-inner {
+        position: relative;
+        justify-content: flex-start;
+      }
+      .site-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .site-logo img { height: 48px; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+        text-align: center;
+      }
+      .hero-label { justify-content: center; }
+      .hero-cta-group { justify-content: center; }
+      .hero-photo {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .photo-chip { display: none; }
+      /* モバイルでは縦写真の代わりに正方形を使う */
+      .hero-photo img { aspect-ratio: 1; object-position: center top; }
+
+      .profile-inner { grid-template-columns: 1fr; gap: 48px; }
+      .profile-photo-wrap { max-width: 320px; margin: 0 auto; }
+
+      .activity-grid { grid-template-columns: 1fr; }
+      .litfun-features { gap: 20px; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 600px) {
+      .litfun-section { padding: 64px 20px; }
+      .btn-litfun-big { padding: 18px 36px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="/" class="site-logo" aria-label="LaLaLu ホーム">
+        <img src="../images/lalalu-logo.png" alt="LALALU ラ ラ ル">
+      </a>
+      <nav class="global-nav" aria-label="グローバルナビゲーション">
+        <a href="/live/">LIVE INFO</a>
+        <a href="/tsl4k/">Tokyo Street Live 4K</a>
+        <a href="/misamon/" class="active">みさーもん</a>
+        <a href="/about/">じゅんきについて</a>
+        <a href="/blog/">NEWS</a>
+        <a href="https://peatix.com/" target="_blank" rel="noopener" class="nav-ticket">🎫 チケット購入</a>
+      </nav>
+    </div>
+    <nav class="mobile-nav-drawer" id="mobile-drawer">
+      <a href="/live/">🎵 LIVE INFO</a>
+      <a href="/tsl4k/">🎬 Tokyo Street Live 4K</a>
+      <a href="/misamon/">🍊 みさーもん</a>
+      <a href="/about/">👤 じゅんきについて</a>
+      <a href="/blog/">📰 NEWS</a>
+      <a href="https://peatix.com/" target="_blank" rel="noopener" class="nav-ticket">🎫 チケット購入</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-deco-text">みさーもん</div>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-label">Singer Songwriter</p>
+          <h1 class="hero-name">みさーもん</h1>
+          <p class="hero-name-ja">M I S A - M O N</p>
+          <p class="hero-catch">
+            オレンジ色のエネルギーで、<br>
+            あなたの日常に<em>音楽</em>を。
+          </p>
+          <p class="hero-sub">
+            シンガーソングライター「みさーもん」。<br>
+            LITFUNアプリでライブ配信・物販を展開中。
+          </p>
+          <div class="hero-cta-group">
+            <a href="https://litfun.jp/" target="_blank" rel="noopener" class="btn-main">
+              🍊 LITFUNでフォローする
+            </a>
+            <a href="#profile" class="btn-ghost">
+              プロフィールを見る
+            </a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img
+            src="../images/misamon-tate.webp"
+            alt="みさーもん"
+            loading="eager"
+          >
+          <div class="photo-chip chip-live">
+            <div class="chip-dot"></div>
+            ライブ配信中
+          </div>
+          <div class="photo-chip chip-litfun">
+            📱 LITFUN
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROFILE ===== -->
+    <section class="profile-section" id="profile">
+      <div class="profile-inner">
+        <div class="fade-up">
+          <p class="section-label">Profile</p>
+          <h2 class="section-title">
+            歌で届ける、<br>
+            <em>みさーもん</em>の世界
+          </h2>
+          <p class="profile-text">
+            オレンジ色のエネルギーを全身にまとったシンガーソングライター。<br>
+            明るい笑顔と等身大の言葉で紡ぐ楽曲が、聴く人の背中を押してくれます。
+          </p>
+          <p class="profile-text">
+            （プロフィール文はじゅんきさんから提供後に差し替えます）
+          </p>
+          <div class="keyword-tags">
+            <span class="keyword-tag"># シンガーソングライター</span>
+            <span class="keyword-tag"># ライブ配信</span>
+            <span class="keyword-tag"># LITFUN</span>
+            <span class="keyword-tag"># オリジナル曲</span>
+            <span class="keyword-tag"># 物販</span>
+          </div>
+        </div>
+        <div class="profile-photo-wrap fade-up">
+          <img
+            src="../images/misamon-square.webp"
+            alt="みさーもん プロフィール写真"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LITFUN CTA ===== -->
+    <section class="litfun-section">
+      <div class="litfun-inner">
+        <p class="litfun-label">📱 App</p>
+        <h2 class="litfun-title">LITFUNで<br>もっと近くに</h2>
+        <p class="litfun-desc">
+          みさーもんの活動拠点はLITFUNアプリ。<br>
+          ライブ配信・限定コンテンツ・物販がすべてここに。
+        </p>
+        <div class="litfun-price-badge">
+          <span class="price">月額700円</span>
+          <span class="unit">（税込）</span>
+        </div>
+        <br>
+        <a href="https://litfun.jp/" target="_blank" rel="noopener" class="btn-litfun-big">
+          🍊 LITFUNをはじめる
+        </a>
+        <p class="litfun-note">iOS・Android 対応</p>
+
+        <div class="litfun-features">
+          <div class="litfun-feature">
+            <div class="litfun-feature-icon">🎥</div>
+            <span class="litfun-feature-label">ライブ配信</span>
+          </div>
+          <div class="litfun-feature">
+            <div class="litfun-feature-icon">🛍️</div>
+            <span class="litfun-feature-label">物販</span>
+          </div>
+          <div class="litfun-feature">
+            <div class="litfun-feature-icon">💬</div>
+            <span class="litfun-feature-label">コメント</span>
+          </div>
+          <div class="litfun-feature">
+            <div class="litfun-feature-icon">⭐</div>
+            <span class="litfun-feature-label">限定コンテンツ</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ACTIVITY ===== -->
+    <section class="activity-section">
+      <div class="activity-inner">
+        <div class="activity-header fade-up">
+          <p class="section-label" style="justify-content:center;">Activity</p>
+          <h2 class="section-title">みさーもんの活動</h2>
+        </div>
+        <div class="activity-grid">
+          <div class="activity-card fade-up">
+            <div class="activity-icon">🎤</div>
+            <h3 class="activity-title">ライブ配信</h3>
+            <p class="activity-desc">
+              LITFUNアプリでのライブ配信を定期的に開催。
+              リアルタイムでみさーもんの歌声を楽しめます。
+              コメントでの交流もお気軽に。
+            </p>
+          </div>
+          <div class="activity-card fade-up">
+            <div class="activity-icon">🎵</div>
+            <h3 class="activity-title">オリジナル楽曲</h3>
+            <p class="activity-desc">
+              自身で制作したオリジナル楽曲を配信・パフォーマンス。
+              等身大の言葉で紡ぐ歌詞が、聴く人の心に響きます。
+            </p>
+          </div>
+          <div class="activity-card fade-up">
+            <div class="activity-icon">🛍️</div>
+            <h3 class="activity-title">物販</h3>
+            <p class="activity-desc">
+              LITFUNアプリ内での物販を展開。
+              みさーもんオリジナルグッズをお楽しみください。
+            </p>
+          </div>
+        </div>
+
+        <!-- じゅんきライブへの誘導 -->
+        <div class="fade-up" style="margin-top:60px; text-align:center; padding:40px; background:var(--white); border-radius:var(--radius-lg); border:1.5px solid rgba(255,107,43,0.15);">
+          <p style="font-size:13px; color:var(--gray-400); margin-bottom:12px; letter-spacing:0.1em; font-weight:700; text-transform:uppercase;">Live Event</p>
+          <h3 style="font-size:22px; font-weight:700; margin-bottom:12px;">みさーもんはじゅんきライブにも出演！</h3>
+          <p style="font-size:14px; color:var(--gray-600); margin-bottom:24px; line-height:1.8;">
+            TSL 4Kスタジオでのじゅんきライブで、<br>みさーもんのステージパフォーマンスも見られます。
+          </p>
+          <a href="/live/" style="display:inline-flex; align-items:center; gap:8px; padding:14px 32px; background:var(--teal); color:var(--white); border-radius:50px; font-size:14px; font-weight:700; transition:background 0.3s; box-shadow:0 4px 16px rgba(61,188,186,0.3);">
+            🎫 じゅんきライブの詳細を見る
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <img src="../images/lalalu-logo.png" alt="LALALU">
+          </div>
+          <p class="footer-tagline">
+            インディーズの舞台から、芸能界へ。<br>
+            じゅんきが仕掛ける音楽の現場。
+          </p>
+        </div>
+        <div>
+          <p class="footer-nav-title">ページ</p>
+          <ul class="footer-nav-list">
+            <li><a href="/live/">🎵 じゅんきライブ</a></li>
+            <li><a href="/tsl4k/">🎬 TSL 4K スタジオ</a></li>
+            <li><a href="/misamon/">🍊 みさーもん</a></li>
+            <li><a href="/about/">👤 じゅんきについて</a></li>
+            <li><a href="/blog/">📰 NEWS</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-nav-title">みさーもん</p>
+          <ul class="footer-nav-list">
+            <li><a href="https://litfun.jp/" target="_blank" rel="noopener">📱 LITFUN（配信・物販）</a></li>
+          </ul>
+          <div style="margin-top:32px;">
+            <p class="footer-nav-title">運営</p>
+            <p style="font-size:12px; line-height:1.8;">
+              LaLaLu　じゅんき
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 LaLaLu（ラ ラ ル）All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy/">プライバシーポリシー</a>
+          <a href="/contact/">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="page-top" id="page-top" aria-label="ページトップへ戻る" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    /* ---- Header scroll ---- */
+    const header = document.getElementById('site-header');
+    const pageTop = document.getElementById('page-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        header.classList.add('scrolled');
+        pageTop.classList.add('visible');
+      } else {
+        header.classList.remove('scrolled');
+        pageTop.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    /* ---- Hamburger ---- */
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobile-drawer');
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---- Intersection Observer ---- */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
