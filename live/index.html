@@ -669,20 +669,12 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .hamburger { display: flex; }
+      .hamburger { display: flex; order: -1; }
       .global-nav { display: none; }
-
-      /* モバイル：ハンバーガー左、ロゴ中央 */
-      .header-inner {
-        position: relative;
-        justify-content: flex-start;
-      }
-      .site-logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+      .header-inner { position: relative; }
+      .site-logo { position: absolute; left: 50%; transform: translateX(-50%); }
       .site-logo img { height: 48px; }
+      .header-inner::after { content: ''; width: 32px; }
 
       .hero-dates { flex-direction: column; align-items: center; }
       .live-event-header { flex-direction: column; gap: 16px; }

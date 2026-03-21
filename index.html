@@ -1006,8 +1006,12 @@
        RESPONSIVE
     =========================== */
     @media (max-width: 900px) {
-      .hamburger { display: flex; }
+      .hamburger { display: flex; order: -1; }
       .global-nav { display: none; }
+      .header-inner { position: relative; }
+      .site-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+      .site-logo img { height: 48px; }
+      .header-inner::after { content: ''; width: 32px; }
 
       .hero-inner {
         grid-template-columns: 1fr;
@@ -1054,8 +1058,11 @@
   <!-- ===== HEADER ===== -->
   <header class="site-header" id="site-header">
     <div class="header-inner">
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <a href="/" class="site-logo" aria-label="LaLaLu ホーム">
-        <img src="images/TOPinlogo.png" alt="LALALU ラ ラ ル">
+        <img src="images/lalalu-logo.png" alt="LALALU ラ ラ ル">
       </a>
       <nav class="global-nav" aria-label="グローバルナビゲーション">
         <a href="/live/">LIVE INFO</a>
@@ -1065,9 +1072,6 @@
         <a href="/blog/">NEWS</a>
         <a href="https://peatix.com/" target="_blank" rel="noopener" class="nav-ticket">🎫 チケット購入</a>
       </nav>
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
     <nav class="mobile-nav-drawer" id="mobile-drawer" aria-label="モバイルナビゲーション">
       <a href="/live/">🎵 LIVE INFO</a>
@@ -1120,21 +1124,21 @@
     <!-- ===== 3本柱ナビバナー ===== -->
     <section class="pillars">
       <div class="pillars-grid">
-        <a href="/live/" class="pillar-card fade-up">
+        <a href="/live/" class="pillar-card">
           <div class="pillar-icon">🎵</div>
           <span class="pillar-tag">Live Event</span>
           <h2 class="pillar-title">じゅんきライブ</h2>
           <p class="pillar-desc">TSL 4Kスタジオでのインディーズライブイベント。チケットはPeatixで販売中。</p>
           <span class="pillar-link">ライブ情報を見る</span>
         </a>
-        <a href="/tsl4k/" class="pillar-card fade-up">
+        <a href="/tsl4k/" class="pillar-card">
           <div class="pillar-icon">🎬</div>
           <span class="pillar-tag">Studio</span>
           <h2 class="pillar-title">TSL 4K スタジオ</h2>
           <p class="pillar-desc">登録者37万人のYouTubeチャンネル。ビル地下の本格スタジオで生まれた数々の芸能デビュー実績。</p>
           <span class="pillar-link">スタジオを知る</span>
         </a>
-        <a href="/misamon/" class="pillar-card orange fade-up">
+        <a href="/misamon/" class="pillar-card orange">
           <div class="pillar-icon">🍊</div>
           <span class="pillar-tag">Singer</span>
           <h2 class="pillar-title">みさーもん</h2>
@@ -1307,7 +1311,7 @@
       <div class="footer-top">
         <div>
           <div class="footer-logo">
-            <img src="images/TOPinlogo.png" alt="LALALU">
+            <img src="images/lalalu-logo.png" alt="LALALU">
           </div>
           <p class="footer-tagline">
             インディーズの舞台から、芸能界へ。<br>
@@ -1336,9 +1340,7 @@
           <div style="margin-top:32px;">
             <p class="footer-nav-title">運営</p>
             <p style="font-size:12px; line-height:1.8;">
-              Northern Lights<br>
-              LaLaLu 事業部<br>
-              運営：君村純一（じゅんき）
+              LaLaLu　じゅんき
             </p>
           </div>
         </div>
