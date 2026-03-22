@@ -1035,11 +1035,18 @@
       .hero-cta-group {
         justify-content: center;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        width: 100%;
       }
-      .hero-visual { display: none; }
-      .hero-scroll { display: none; }
-      .hero-badge { display: none; }
+      .btn-primary, .btn-outline {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      .hero-visual,
+      .hero-visual-placeholder,
+      .hero-badge,
+      .hero-scroll { display: none !important; }
 
       .pillars-grid { grid-template-columns: 1fr; }
 
