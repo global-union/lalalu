@@ -1016,21 +1016,30 @@
 
       .hero { overflow: hidden; }
       .hero-inner {
-        grid-template-columns: 1fr !important;
-        text-align: center;
-        padding-top: 110px;
-        padding-bottom: 60px;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
+        display: block;
+        padding: 110px 20px 60px;
+        width: 100%;
+        max-width: 100%;
       }
-      .hero-bg,
-      .hero-bg::before { overflow: hidden; }
-      .hero-copy-en { font-size: clamp(28px, 7vw, 48px) !important; word-break: break-word; overflow-wrap: break-word; }
+      .hero-content {
+        width: 100%;
+        text-align: center;
+      }
+      .hero-copy-en {
+        font-size: clamp(28px, 8vw, 44px);
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
       .hero-copy-ja { font-size: 14px; }
       .hero-label { justify-content: center; }
-      .hero-cta-group { justify-content: center; flex-direction: column; align-items: center; }
-      .hero-visual { display: none !important; }
+      .hero-cta-group {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-visual { display: none; }
       .hero-scroll { display: none; }
+      .hero-badge { display: none; }
 
       .pillars-grid { grid-template-columns: 1fr; }
 
